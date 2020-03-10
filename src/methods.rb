@@ -71,3 +71,11 @@ def no_of_drinks
     puts "How many?"
     @no_drink = gets.chomp.to_i
 end
+
+def drinks_by_category
+    @drinks_cat = (@standard_drinks * @no_drink).round(1)
+    @drinks += @drinks_cat
+    clear
+    puts "Number of standard drinks: #{@drinks_cat}"
+    back_to_menu
+end
