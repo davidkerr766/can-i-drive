@@ -2,6 +2,21 @@ def display_info
     "Some info about BAC"
 end
 
+def clear
+    system("clear")
+end
+
+def back_to_menu
+    puts "\n\n\nPress enter to return to menu"
+    gets
+    clear
+end
+
+def make_a_selection
+    puts "\n"
+    puts "Type the number for your selection then press enter."
+end
+
 def sex_constants (sex)
     if sex == "m"
         @metabolic_constant = 0.015
