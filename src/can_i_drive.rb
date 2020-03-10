@@ -47,15 +47,11 @@ def bac_calc_input
     #BAC calc
     blood_alcohol = ((0.806 * drinks * 1.2) / (body_water_constant * weight) - (metabolic_constant * drinking_session)).round(3)
 
-    
+
     blood_alcohol = 0 if blood_alcohol < 0
 
     time_to_drive =(((0.806 * drinks * 1.2)/(body_water_constant * weight)) - 0.05) / metabolic_constant - drinking_session
 
-    puts "The current time: #{time_now.hour}:#{now_mins}hrs"
-    puts "Time since drinking began: #{drink_hours}:#{drink_mins}hrs"
-    puts "Estimated blood alcohol: #{blood_alcohol}g/dL"
-    puts "Hours until BAC is 0.05: #{time_to_drive}"
 end
 
 puts "1. Info"
