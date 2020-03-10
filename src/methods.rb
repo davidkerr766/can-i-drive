@@ -17,6 +17,12 @@ def make_a_selection
     puts "Type the number for your selection then press enter."
 end
 
+def invalid_input
+    clear
+    puts "Not a valid input"
+    back_to_menu
+end
+
 def sex_constants (sex)
     if sex == "m"
         @metabolic_constant = 0.015
@@ -44,4 +50,24 @@ def bac_calc_input
     sex = gets.chomp
     sex_constants(sex)
     @drinker = Drinker.new(user_name, weight, @metabolic_constant, @body_water_constant, time_hour, time_minute, drinks)
+end
+
+def drinks_calc_percentage
+    clear
+    puts "What is the volume of the drink in mls?"
+    volume = gets.chomp.to_i
+    puts "What is the percentage of alcohol?"
+    alcohol = gets.chomp.to_f
+    puts "How many drinks comsumed?"
+    quantity = gets.chomp.to_i
+    standard_drinks = (quantity * volume * alcohol/100 / 12.674).round(1)
+    @drinks += standard_drinks
+    clear
+    puts "Standard Drinks: #{standard_drinks}"
+end
+
+def no_of_drinks
+    clear
+    puts "How many?"
+    @no_drink = gets.chomp.to_i
 end
