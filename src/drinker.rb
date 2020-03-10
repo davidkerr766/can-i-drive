@@ -31,6 +31,3 @@ class Drinker < User
     end
 end
 
-baz = Drinker.new("baz", 87, 0.015, 0.58, 12, 12, 8)
-p baz.bac_calc
-p baz.time_to_drive
