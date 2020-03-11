@@ -32,6 +32,8 @@ loop do
         clear
         break    
     when "2"
+        clear
+        can_i_drive
         user_selection
         make_a_selection
         @my_user = gets.chomp.to_i
@@ -76,7 +78,7 @@ loop do
             clear
             can_i_drive
             puts "Standard drinks tally: #{@drinks}"
-            puts "\n1. I know how many drinks I've had"
+            puts "\n1. Calculate BAC"
             puts "2. Calculate number of drinks"
             puts "3. Reset drinks tally"
             puts "4. Back"
@@ -88,12 +90,16 @@ loop do
                 bac_calc_input
                 clear
                 can_i_drive
-                puts "Blood alcohol is: #{@drinker.bac_calc}"
+                count_down
+                can_i_drive
+                puts @drinker.bac_calc <= 0.05 ? @a.asciify("YES!") : @a.asciify("NOT YET")
+                puts "\nBlood alcohol is: #{@drinker.bac_calc}"
                 puts "You can drive at: #{@drinker.time_to_drive}"
                 back_to_menu
             when "2"
                 loop do
                     clear
+                    can_i_drive
                     puts "Standard drinks tally: #{@drinks}"
                     puts "\n1. Add drink by alcohol percentage and volume"
                     puts "2. Add drink by category"
@@ -102,6 +108,8 @@ loop do
                     calc_choice = gets.chomp
                     case calc_choice
                     when "1"
+                        clear
+                        can_i_drive
                         drinks_calc_percentage
                         back_to_menu
                     when "2"
@@ -109,14 +117,14 @@ loop do
                             clear
                             can_i_drive
                             puts "Standard drinks tally: #{@drinks}"
-                            puts "\nSelect a category of drink to add"
-                            puts "1. Schooner of mid strength beer (425ml, 3.5%)"
+                            puts "\n1. Schooner of mid strength beer (425ml, 3.5%)"
                             puts "2. Schooner of full strength beer (425ml, 4.8%)"
                             puts "3. Pint of mid strength beer (570ml, 3.5%)"
                             puts "4. Pint of full strength beer (570ml, 4.8%)"
                             puts "5. Standard glass of wine (150ml, 13%)"
                             puts "6. One shot of spirits (30ml, 40%)"
                             puts "7. Finished"
+                            make_a_selection
                             category_choice = gets.chomp
                             case category_choice
                             when "1"

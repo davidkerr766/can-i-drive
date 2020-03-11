@@ -46,7 +46,7 @@ end
 
 def invalid_input
     clear
-    puts "Not a valid input"
+    puts "Not valid input. Enter a number followed by enter."
     back_to_menu
 end
 
@@ -87,7 +87,6 @@ def bac_calc_input
 end
 
 def drinks_calc_percentage
-    clear
     puts "What is the volume of the drink in mls?"
     volume = gets.chomp.to_i
     puts "What is the percentage of alcohol?"
@@ -115,7 +114,6 @@ def drinks_by_category
 end
 
 def user_selection
-    clear
     puts "Select User"
     @users.each { |user|
         @array_of_users << user.name
@@ -130,4 +128,18 @@ def import_user
     @weight = @users[@my_user-1].weight
     @metabolic = @users[@my_user-1].metabolic_constant.to_f
     @body_water = @users[@my_user-1].body_water_constant.to_f
+end
+
+def count_down
+    puts @a.asciify("3")
+    sleep(1)
+    clear
+    can_i_drive
+    puts @a.asciify("2")
+    sleep(1)
+    clear
+    can_i_drive
+    puts @a.asciify("1")
+    sleep(1)
+    clear
 end
