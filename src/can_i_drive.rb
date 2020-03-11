@@ -1,3 +1,4 @@
+require 'csv'
 require_relative 'drinker'
 require_relative 'methods'
 
@@ -20,7 +21,8 @@ loop do
     when "2"
         loop do
             clear
-            puts "1. I know how many drinks I've had"
+            puts "Standard drinks tally: #{@drinks}"
+            puts "\n1. I know how many drinks I've had"
             puts "2. Calculate number of drinks"
             puts "3. Back"
             make_a_selection

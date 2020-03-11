@@ -42,14 +42,16 @@ def bac_calc_input
     time_hour = gets.chomp.to_i
     puts "What minute did you start drinking?"
     time_minute = gets.chomp.to_i
-    puts "How many standard drinks have you consumed?"
-    drinks = gets.chomp.to_f
+    if @drinks == 0
+        puts "How many standard drinks have you consumed?"
+        @drinks = gets.chomp.to_f
+    end
     puts "What is your weight in kgs?"
     weight = gets.chomp.to_f
     puts "Is your sex male or female? (m/f)"
     sex = gets.chomp
     sex_constants(sex)
-    @drinker = Drinker.new(user_name, weight, @metabolic_constant, @body_water_constant, time_hour, time_minute, drinks)
+    @drinker = Drinker.new(user_name, weight, @metabolic_constant, @body_water_constant, time_hour, time_minute, @drinks)
 end
 
 def drinks_calc_percentage
