@@ -44,6 +44,9 @@ def bac_calc_input
         puts "Is your sex male or female? (m/f)"
         sex = gets.chomp
         sex_constants(sex)
+        CSV.open("users.csv", "a") { |csv|
+            csv << [@user_name, @weight, @metabolic, @body_water]
+        }
     end
     puts "What hour did you start drinking (in 24hr time)?"
     time_hour = gets.chomp.to_i

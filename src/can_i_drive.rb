@@ -72,6 +72,7 @@ loop do
             puts "Standard drinks tally: #{@drinks}"
             puts "\n1. I know how many drinks I've had"
             puts "2. Calculate number of drinks"
+            puts "3. Reset drinks tally"
             puts "3. Back"
             make_a_selection
             drink_choice = gets.chomp
@@ -148,6 +149,9 @@ loop do
                     end
                 end
             when "3"
+                clear
+                @drinks = 0
+            when "4"
                 clear
                 break
             else
