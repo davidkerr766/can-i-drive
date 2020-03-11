@@ -1,4 +1,6 @@
 require 'csv'
+require 'colorize'
+require 'tty-box'
 require_relative 'drinker'
 require_relative 'methods'
 
@@ -18,7 +20,7 @@ require_relative 'methods'
 }
 
 loop do
-    puts "1. New User"
+    puts "1. New User".colorize(:green)
     puts "2. Returning"
     make_a_selection
     user_choice =gets.chomp

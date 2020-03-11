@@ -9,9 +9,10 @@ def continue
 end
 
 def display_info
-    puts "Blood alcohol content (BAC) is the measure of alcohol in your blood."
-    puts "It is measured in g/dl.  Meaning with a BAC of 0.05 there is 0.05g"
-    puts "of alcohol in every 100ml of blood."
+    box1 = TTY::Box.frame(width: 40, height: 15) {
+        "Blood alcohol content (BAC) is the measure of alcohol in your blood. It is measured in g/dl. Meaning with a BAC of 0.05 there is 0.05g of alcohol in every 100ml of blood."
+    }
+    print box1
     continue
     puts "In Queensland the limit for driving is a BAC of 0.05 if you hold an"
     puts "open car licence.  If you are a learner, on P plates, being paid to"
