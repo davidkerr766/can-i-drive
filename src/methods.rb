@@ -1,3 +1,7 @@
+def can_i_drive
+    puts @a.asciify('Can I drive?')
+end
+
 def clear
     system("clear")
 end
@@ -12,16 +16,19 @@ def display_info
     box1 = TTY::Box.frame(width: 33, height: 13) {
         "Blood alcohol content (BAC) is the measure of alcohol in your blood. It is measured in g/dl. Meaning with a BAC of 0.05 there is 0.05g of alcohol in every 100ml of blood."
     }
+    can_i_drive
     print box1
     continue
     box2 = TTY::Box.frame(width: 33, height: 13) {
         "In Queensland the limit for driving is a BAC of 0.05 if you hold an open car licence. If you are a learner, on P plates, being paid to transport passengers or in vehicle over 4.5tons then the limit is zero."
     }
+    can_i_drive
     print box2
     continue
     box3 = TTY::Box.frame(width: 33, height: 13) {
         "\"Can I Drive\" uses the Widmark formula to calculate BAC. The Widmark formula uses inputs such as weight and sex to make a more accurate estimate of BAC. There is variability in the metabolism of alcohol among individuals and therefore it must be emphasised that the BAC calculated is only an estimate."
     }
+    can_i_drive
     print box3
     continue
 end

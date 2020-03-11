@@ -1,6 +1,7 @@
 require 'csv'
 require 'colorize'
 require 'tty-box'
+require 'artii'
 require_relative 'drinker'
 require_relative 'methods'
 
@@ -14,12 +15,14 @@ require_relative 'methods'
 @metabolic = 0
 @body_water = 0
 @users_array = CSV.read("./users.csv")
+@a = Artii::Base.new
 
 @users_array.each { |row|
     @users << User.new(row[0], row[1], row[2], row[3])
 }
 
 loop do
+    can_i_drive
     puts "1. New User".colorize(:green)
     puts "2. Returning"
     make_a_selection
@@ -57,6 +60,7 @@ loop do
 end
 
 loop do
+    can_i_drive
     puts "1. Info"
     puts "2. Calculate my BAC"
     puts "3. Quit"
@@ -70,6 +74,7 @@ loop do
     when "2"
         loop do
             clear
+            can_i_drive
             puts "Standard drinks tally: #{@drinks}"
             puts "\n1. I know how many drinks I've had"
             puts "2. Calculate number of drinks"
@@ -82,8 +87,9 @@ loop do
                 clear
                 bac_calc_input
                 clear
+                can_i_drive
                 puts "Blood alcohol is: #{@drinker.bac_calc}"
-                puts "Estimated BAC of 0.05 at: #{@drinker.time_to_drive}"
+                puts "You can drive at: #{@drinker.time_to_drive}"
                 back_to_menu
             when "2"
                 loop do
@@ -101,6 +107,7 @@ loop do
                     when "2"
                         loop do
                             clear
+                            can_i_drive
                             puts "Standard drinks tally: #{@drinks}"
                             puts "\nSelect a category of drink to add"
                             puts "1. Schooner of mid strength beer (425ml, 3.5%)"
@@ -167,4 +174,3 @@ loop do
         invalid_input
     end
 end
-
