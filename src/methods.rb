@@ -19,9 +19,9 @@ def display_info
     continue
     puts "\"Can I Drive\" uses the Widmark formula to calculate BAC. The Widmark"
     puts "formula uses inputs such as weight and sex to make a more accurate "
-    puts "estimate of BAC. There is variability in the metabolic clearance of"
-    puts "alcohol among individuals and therefore it must be emphasised that"
-    puts "BAC calculated is only an estimate."
+    puts "estimate of BAC. There is variability in the metabolism of alcohol"
+    puts "among individuals and therefore it must be emphasised that the BAC"
+    puts "calculated is only an estimate."
     continue
 end
 

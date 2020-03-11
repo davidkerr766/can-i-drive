@@ -72,7 +72,7 @@ loop do
             puts "\n1. I know how many drinks I've had"
             puts "2. Calculate number of drinks"
             puts "3. Reset drinks tally"
-            puts "3. Back"
+            puts "4. Back"
             make_a_selection
             drink_choice = gets.chomp
             case drink_choice
@@ -81,6 +81,7 @@ loop do
                 bac_calc_input
                 clear
                 puts "Blood alcohol is: #{@drinker.bac_calc}"
+                puts "Estimated BAC of 0.05 at: #{@drinker.time_to_drive}"
                 back_to_menu
             when "2"
                 loop do

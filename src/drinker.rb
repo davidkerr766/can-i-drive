@@ -27,7 +27,15 @@ class Drinker < User
     end
 
     def time_to_drive
-        (((0.806 * @drinks * 1.2)/(@body_water_constant * @weight)) - 0.05) / @metabolic_constant - drinking_session
+        time_now = Time.new
+        hours =(((0.806 * @drinks * 1.2)/(@body_water_constant * @weight)) - 0.05) / @metabolic_constant - drinking_session
+        hour = hours < 1 ? 0 : hours.to_i
+        mins = hours < 1 ? (hours * 60).to_i : ((hours - hour) * 60).to_i
+        drive_hour = (time_now.hour + hour) % 24
+        drive_min = (time_now.min + mins) % 60
+        drive_hour += 1 if mins < time_now.min
+        drive_min = "0" + drive_min.to_s if drive_min < 10
+        drive_hour = "0" + drive_hour.to_s if drive_hour < 10
+        return "#{drive_hour}:#{drive_min}"
     end
 end
-
