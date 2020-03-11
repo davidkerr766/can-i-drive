@@ -5,6 +5,54 @@ require_relative 'methods'
 @drinks = 0
 @no_drink = 0
 @standard_drinks = 0
+@users = []
+@array_of_users = []
+@user_name = ""
+@weight = 0
+@metabolic = 0
+@body_water = 0
+@users_array = CSV.read("./users.csv")
+
+@users_array.each { |row|
+    @users << User.new(row[0], row[1], row[2], row[3])
+}
+
+loop do
+    puts "1. New User"
+    puts "2. Returning"
+    make_a_selection
+    user_choice =gets.chomp
+    case user_choice
+    when "1"
+        clear
+        break    
+    when "2"
+        user_selection
+        make_a_selection
+        @my_user = gets.chomp.to_i
+        case @my_user
+        when 1
+            import_user
+        when 2
+            import_user
+        when 3
+            import_user
+        when 4
+            import_user
+        when 5
+            import_user
+        when 6
+            import_user
+        else
+            invalid_input
+        end
+
+        clear
+        break
+    else
+        invalid_input
+    end
+end
 
 loop do
     puts "1. Info"

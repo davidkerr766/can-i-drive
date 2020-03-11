@@ -25,19 +25,26 @@ end
 
 def sex_constants (sex)
     if sex == "m"
-        @metabolic_constant = 0.015
-        @body_water_constant = 0.58
+        @metabolic = 0.015
+        @body_water = 0.58
     elsif sex == "f"
-        @metabolic_constant = 0.017
-        @body_water_constant = 0.49
+        @metabolic = 0.017
+        @body_water = 0.49
     else
     puts "must be 'm' or 'f'"
     end
 end
 
 def bac_calc_input
-    puts "What is your name?"
-    user_name = gets.chomp
+    if @user_name == ""
+        puts "What is your name?"
+        @user_name = gets.chomp
+        puts "What is your weight in kgs?"
+        @weight = gets.chomp.to_f
+        puts "Is your sex male or female? (m/f)"
+        sex = gets.chomp
+        sex_constants(sex)
+    end
     puts "What hour did you start drinking (in 24hr time)?"
     time_hour = gets.chomp.to_i
     puts "What minute did you start drinking?"
@@ -46,12 +53,7 @@ def bac_calc_input
         puts "How many standard drinks have you consumed?"
         @drinks = gets.chomp.to_f
     end
-    puts "What is your weight in kgs?"
-    weight = gets.chomp.to_f
-    puts "Is your sex male or female? (m/f)"
-    sex = gets.chomp
-    sex_constants(sex)
-    @drinker = Drinker.new(user_name, weight, @metabolic_constant, @body_water_constant, time_hour, time_minute, @drinks)
+    @drinker = Drinker.new(@user_name, @weight, @metabolic, @body_water, time_hour, time_minute, @drinks)
 end
 
 def drinks_calc_percentage
@@ -80,4 +82,22 @@ def drinks_by_category
     clear
     puts "Number of standard drinks: #{@drinks_cat}"
     back_to_menu
+end
+
+def user_selection
+    clear
+    puts "Select User"
+    @users.each { |user|
+        @array_of_users << user.name
+    }
+    (0..@array_of_users.length-1).each { |i|
+        puts "#{i+1}. #{@array_of_users[i]}"
+    }
+end
+
+def import_user
+    @user_name = @users[@my_user-1].name
+    @weight = @users[@my_user-1].weight
+    @metabolic = @users[@my_user-1].metabolic_constant.to_f
+    @body_water = @users[@my_user-1].body_water_constant.to_f
 end
