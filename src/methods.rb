@@ -1,9 +1,28 @@
-def display_info
-    "Some info about BAC"
-end
-
 def clear
     system("clear")
+end
+
+def continue
+    puts "\nPress enter to continue"
+    gets
+    clear
+end
+
+def display_info
+    puts "Blood alcohol content (BAC) is the measure of alcohol in your blood."
+    puts "It is measured in g/dl.  Meaning with a BAC of 0.05 there is 0.05g"
+    puts "of alcohol in every 100ml of blood."
+    continue
+    puts "In Queensland the limit for driving is a BAC of 0.05 if you hold an"
+    puts "open car licence.  If you are a learner, on P plates, being paid to"
+    puts "transport passengers or in vehicle over 4.5tons then the limit is zero."
+    continue
+    puts "\"Can I Drive\" uses the Widmark formula to calculate BAC. The Widmark"
+    puts "formula uses inputs such as weight and sex to make a more accurate "
+    puts "estimate of BAC. There is variability in the metabolic clearance of"
+    puts "alcohol among individuals and therefore it must be emphasised that"
+    puts "BAC calculated is only an estimate."
+    continue
 end
 
 def back_to_menu

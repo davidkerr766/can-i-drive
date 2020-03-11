@@ -64,8 +64,7 @@ loop do
     case choice
     when "1" 
         clear
-        puts display_info
-        back_to_menu
+        display_info
     when "2"
         loop do
             clear
