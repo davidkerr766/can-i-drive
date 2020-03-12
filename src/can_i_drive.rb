@@ -10,7 +10,10 @@ require_relative 'methods'
 @standard_drinks = 0
 @users = []
 @array_of_users = []
+@time_hour = "abc"
+@time_minute = "abc"
 @user_name = ""
+@sex = ""
 @weight = 0
 @metabolic = 0
 @body_water = 0
@@ -65,23 +68,23 @@ end
 
 loop do
     can_i_drive
-    puts "1. Information about blood alcohol concentration(BAC)".colorize(:cyan)
-    puts "2. Can I drive?".colorize(:cyan)
+    puts "1. Continue to Calculators".colorize(:cyan)
+    puts "2. Information about blood alcohol concentration(BAC)".colorize(:cyan)
     puts "3. Party mode(WARNING: Once you start partying there's no stopping)".colorize(:cyan)
     puts "4. Quit".colorize(:cyan)
     make_a_selection
     choice = gets.chomp
 
     case choice
-    when "1" 
+    when "2" 
         clear
         display_info
-    when "2"
+    when "1"
         loop do
             clear
             can_i_drive
             puts "Standard drinks tally: #{@drinks}"
-            puts "\n1. Can I Drive?".colorize(:cyan)
+            puts "\n1. Can I Drive? (If you know how many drinks you've had start here)".colorize(:cyan)
             puts "2. Calculate number of drinks".colorize(:cyan)
             puts "3. Reset drinks tally".colorize(:cyan)
             puts "4. Back".colorize(:cyan)

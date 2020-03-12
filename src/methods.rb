@@ -61,8 +61,6 @@ def sex_constants (sex)
     elsif sex == "f"
         @metabolic = 0.017
         @body_water = 0.49
-    else
-    puts "must be 'm' or 'f'"
     end
 end
 
@@ -79,22 +77,43 @@ def bac_calc_input
                 error_message
             end  
         end
-        puts "Is your sex male or female? (m/f)".colorize(:green)
-        sex = gets.chomp
-        sex_constants(sex)
+        while @sex != "m" && @sex != "f"
+            begin
+                puts "Is your sex male or female? (m/f)".colorize(:green)
+                @sex = gets.chomp
+                raise if @sex != "m" && @sex != "f"
+            rescue
+                error_message
+            end
+        end
+        sex_constants(@sex)
         CSV.open("users.csv", "a") { |csv|
             csv << [@user_name, @weight, @metabolic, @body_water]
         }
     end
-    puts "What hour did you start drinking (in 24hr time)?".colorize(:green)
-    time_hour = gets.chomp.to_i
-    puts "What minute did you start drinking?".colorize(:green)
-    time_minute = gets.chomp.to_i
+    while @time_hour.to_i.to_s != @time_hour || @time_hour.to_i < 0 || @time_hour.to_i > 24
+        begin
+            puts "What hour did you start drinking (in 24hr time)?".colorize(:green)
+            @time_hour = gets.chomp
+            raise if @time_hour.to_i.to_s != @time_hour || @time_hour.to_i < 0 || @time_hour.to_i > 24
+        rescue
+            error_message
+        end
+    end
+    while @time_minute.to_i.to_s != @time_minute || @time_minute.to_i < 0 || @time_minute.to_i > 60
+        begin
+            puts "What minute did you start drinking?".colorize(:green)
+            @time_minute = gets.chomp
+            raise if @time_minute.to_i.to_s != @time_minute || @time_minute.to_i < 0 || @time_minute.to_i > 60
+        rescue
+            error_message
+        end
+    end
     if @drinks == 0
         puts "How many standard drinks have you consumed?".colorize(:green)
         @drinks = gets.chomp.to_f
     end
-    @drinker = Drinker.new(@user_name, @weight, @metabolic, @body_water, time_hour, time_minute, @drinks)
+    @drinker = Drinker.new(@user_name, @weight, @metabolic, @body_water, @time_hour, @time_minute, @drinks)
 end
 
 def drinks_calc_percentage

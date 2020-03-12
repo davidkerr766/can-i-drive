@@ -3,8 +3,8 @@ require_relative 'user'
 class Drinker < User
     def initialize (name, weight, metabolic_constant, body_water_constant, start_hour, start_min, drinks)
         super(name, weight, metabolic_constant, body_water_constant)
-        @start_hour = start_hour
-        @start_min = start_min
+        @start_hour = start_hour.to_i
+        @start_min = start_min.to_i
         @drinks = drinks
     end
 
