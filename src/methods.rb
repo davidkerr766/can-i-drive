@@ -1,21 +1,26 @@
+#Prints the header in large font
 def can_i_drive
     puts @a.asciify('Can I drive?')
 end
 
+#Clears the terminal of all text
 def clear
     system("clear")
 end
 
+#Pauses the execution of the app, asking for input to continue
 def continue
     puts "\nPress enter to continue"
     gets
     clear
 end
 
+#Prints an error message 
 def error_message
     puts "Error. Read the question carefully."
 end
 
+#Prints the BAC info into boxes asking the user for input to continue each time
 def display_info
     box1 = TTY::Box.frame(width: 33, height: 13) {
         "Blood alcohol content (BAC) is the measure of alcohol in your blood. It is measured in g/dl. Meaning with a BAC of 0.05 there is 0.05g of alcohol in every 100ml of blood."
@@ -37,23 +42,27 @@ def display_info
     continue
 end
 
+#Pauses the execution of the app asking for user input to return to menu
 def back_to_menu
     puts "\n\n\nPress enter to return to menu"
     gets
     clear
 end
 
+#Asks the user to make a selection
 def make_a_selection
     puts "\n"
     puts "Type the number for your selection then press enter."
 end
 
+#Prints an error message
 def invalid_input
     clear
     puts "Not valid input. Enter a number followed by enter."
     back_to_menu
 end
 
+#Assigns constants according to selection of sex
 def sex_constants (sex)
     if sex == "m"
         @metabolic = 0.015
@@ -64,7 +73,9 @@ def sex_constants (sex)
     end
 end
 
+#Asks the user for input then initialises a Drinker object with the inputs while handling all errors
 def bac_calc_input
+    #Checks if a user profile has been selected
     if @user_name == ""
         puts "What is your name?".colorize(:green)
         @user_name = gets.chomp
@@ -72,6 +83,7 @@ def bac_calc_input
             begin
                 puts "What is your weight in kgs?".colorize(:green)
                 @weight = gets.chomp.to_i
+                #Checks the value is not negative. A string of letters will be cast to 0 and raise an exception
                 raise if @weight <= 0
             rescue
                 error_message
@@ -87,6 +99,7 @@ def bac_calc_input
             end
         end
         sex_constants(@sex)
+        #New user responses are saved to a csv file so they can be imported the next time
         CSV.open("users.csv", "a") { |csv|
             csv << [@user_name, @weight, @metabolic, @body_water]
         }
@@ -95,6 +108,7 @@ def bac_calc_input
         begin
             puts "What hour did you start drinking (in 24hr time)?".colorize(:green)
             @time_hour = gets.chomp
+            #Checks if letters have been entered or numbers outside of 0-24
             raise if @time_hour.to_i.to_s != @time_hour || @time_hour.to_i < 0 || @time_hour.to_i > 24
         rescue
             error_message
@@ -123,6 +137,7 @@ def bac_calc_input
     @drinker = Drinker.new(@user_name, @weight, @metabolic, @body_water, @time_hour, @time_minute, @drinks)
 end
 
+#Gets user inputs of volume, alcohol and quantity. Outputs number of standard drinks
 def drinks_calc_percentage
     volume = "abc"
     alcohol = "abc"
@@ -131,6 +146,7 @@ def drinks_calc_percentage
         begin
             puts "What is the volume of the drink in mls?".colorize(:green)
             volume = gets.chomp
+            #Checks if letters or a negative number is used as input
             raise if volume.to_i.to_s != volume || volume.to_i < 0
         rescue
             error_message
@@ -154,18 +170,21 @@ def drinks_calc_percentage
             error_message
         end
     end
+    #Calculates standard drinks based on 12.674mls of ethanol being equal to 10g (1 standard drink)
     standard_drinks = (quantity.to_i * volume.to_i * alcohol.to_f/100 / 12.674).round(1)
     @drinks += standard_drinks
     clear
     puts "Standard Drinks: #{standard_drinks}"
 end
 
+#Asks for user input for number of drinks and sets a variable
 def no_of_drinks
     clear
     while @no_drink.to_i.to_s != @no_drink || @no_drink.to_i < 0
         begin
         puts "How many?".colorize(:green)
         @no_drink = gets.chomp
+        #Checks if the input is letters or negative
         raise if @no_drink.to_i.to_s != @no_drink || @no_drink.to_i < 0
         rescue
             error_message
@@ -173,14 +192,17 @@ def no_of_drinks
     end
 end
 
+#Adds the number of drinks calculated by category and displays them
 def drinks_by_category
     @drinks_cat = (@standard_drinks * @no_drink.to_i).round(1)
     @drinks += @drinks_cat
     clear
     puts "Number of standard drinks: #{@drinks_cat}"
     back_to_menu
+    @no_drink = "abc"
 end
 
+#Gets user names out of an array of User objects and prints to console
 def user_selection
     puts "Select User"
     @users.each { |user|
@@ -191,6 +213,7 @@ def user_selection
     }
 end
 
+#Extracts values out of the User object selected and assigns them to variables
 def import_user
     @user_name = @users[@my_user-1].name
     @weight = @users[@my_user-1].weight
@@ -198,6 +221,7 @@ def import_user
     @body_water = @users[@my_user-1].body_water_constant.to_f
 end
 
+#Prints a count down from 3 in large font
 def count_down
     puts @a.asciify("3")
     sleep(1)
@@ -212,6 +236,7 @@ def count_down
     clear
 end
 
+#Prints a box with welcome information to the console. Allows user input to continue to a second box
 def welcome
     can_i_drive
     welcome_box = TTY::Box.frame(width: 27, height: 11) {
