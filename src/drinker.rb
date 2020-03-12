@@ -33,11 +33,14 @@ class Drinker < User
         time_now = Time.new
         #Widmark formula manipulated to give hours given a known BAC (minus the time from when drinking began to the current time)
         hours =(((0.806 * @drinks * 1.2)/(@body_water_constant * @weight)) - 0.05) / @metabolic_constant - drinking_session
+        #Splits the hours from a float to integers of hours and mins
         hour = hours < 1 ? 0 : hours.to_i
         mins = hours < 1 ? (hours * 60).to_i : ((hours - hour) * 60).to_i
         drive_hour = (time_now.hour + hour) % 24
         drive_min = (time_now.min + mins) % 60
+        #Adds an hour if modulo is used when calculating mins
         drive_hour += 1 if (mins + time_now.min) > 60
+        #Reformats the mins and hours so the output reads like a digital clock
         drive_min = "0" + drive_min.to_s if drive_min < 10
         drive_hour = "0" + drive_hour.to_s if drive_hour < 10
         return "Now!" if bac_calc <= 0.05

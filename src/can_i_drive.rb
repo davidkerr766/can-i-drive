@@ -18,9 +18,12 @@ require_relative 'methods'
 @metabolic = 0
 @body_water = 0
 @party_count = 0
-@users_array = CSV.read("./users.csv")
 @a = Artii::Base.new
 
+#Reads the user data from the csv file and assigns it to an array of arrays
+@users_array = CSV.read("./users.csv")
+
+#Unpacks user data from the users array and makes an array of User objects
 @users_array.each { |row|
     @users << User.new(row[0], row[1], row[2], row[3])
 }
@@ -184,6 +187,7 @@ loop do
         end
     when "3"
         clear
+        #Activates the lolize gem to change the colour of all output
         require 'lolize/auto'
     when "4"
         clear
