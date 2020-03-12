@@ -12,6 +12,10 @@ def continue
     clear
 end
 
+def error_message
+    puts "Error. Read the question carefully."
+end
+
 def display_info
     box1 = TTY::Box.frame(width: 33, height: 13) {
         "Blood alcohol content (BAC) is the measure of alcohol in your blood. It is measured in g/dl. Meaning with a BAC of 0.05 there is 0.05g of alcohol in every 100ml of blood."
@@ -66,8 +70,15 @@ def bac_calc_input
     if @user_name == ""
         puts "What is your name?".colorize(:green)
         @user_name = gets.chomp
-        puts "What is your weight in kgs?".colorize(:green)
-        @weight = gets.chomp.to_f
+        while @weight <= 0
+            begin
+                puts "What is your weight in kgs?".colorize(:green)
+                @weight = gets.chomp.to_i
+                raise if @weight <= 0
+            rescue
+                error_message
+            end  
+        end
         puts "Is your sex male or female? (m/f)".colorize(:green)
         sex = gets.chomp
         sex_constants(sex)
