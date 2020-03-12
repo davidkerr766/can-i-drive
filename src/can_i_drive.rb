@@ -14,6 +14,7 @@ require_relative 'methods'
 @weight = 0
 @metabolic = 0
 @body_water = 0
+@party_count = 0
 @users_array = CSV.read("./users.csv")
 @a = Artii::Base.new
 
@@ -63,9 +64,10 @@ end
 
 loop do
     can_i_drive
-    puts "1. Info"
-    puts "2. Calculate my BAC"
-    puts "3. Quit"
+    puts "1. Information about blood alcohol concentration(BAC)"
+    puts "2. Can I drive?"
+    puts "3. Party mode(WARNING: Once you start partying there's no stopping")
+    puts "4. Quit"
     make_a_selection
     choice = gets.chomp
 
@@ -176,6 +178,9 @@ loop do
             end
         end
     when "3"
+        clear
+        require 'lolize/auto'
+    when "4"
         clear
         break
     else
