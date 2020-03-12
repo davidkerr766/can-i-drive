@@ -6,7 +6,7 @@ require_relative 'drinker'
 require_relative 'methods'
 
 @drinks = 0
-@no_drink = 0
+@no_drink = "abc"
 @standard_drinks = 0
 @users = []
 @array_of_users = []

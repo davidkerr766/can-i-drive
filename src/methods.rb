@@ -136,27 +136,48 @@ def drinks_calc_percentage
             error_message
         end
     end
-    puts "What is the percentage of alcohol?".colorize(:green)
-    alcohol = gets.chomp
-    puts "How many drinks comsumed?".colorize(:green)
-    quantity = gets.chomp
+    while alcohol.to_i.to_s != alcohol || alcohol.to_i < 0
+        begin
+            puts "What is the percentage of alcohol?".colorize(:green)
+            alcohol = gets.chomp
+            raise if alcohol.to_i.to_s != alcohol || alcohol.to_i < 0
+        rescue
+            error_message
+        end
+    end
+    while quantity.to_i.to_s != quantity || quantity.to_i < 0
+        begin
+            puts "How many drinks comsumed?".colorize(:green)
+            quantity = gets.chomp
+            raise if quantity.to_i.to_s != quantity || quantity.to_i < 0
+        rescue
+            error_message
+        end
+    end
     standard_drinks = (quantity.to_i * volume.to_i * alcohol.to_f/100 / 12.674).round(1)
     @drinks += standard_drinks
     clear
-    puts "Standard Drinks: #{standard_drinks}".colorize(:red)
+    puts "Standard Drinks: #{standard_drinks}"
 end
 
 def no_of_drinks
     clear
-    puts "How many?".colorize(:green)
-    @no_drink = gets.chomp.to_i
+    while @no_drink.to_i.to_s != @no_drink || @no_drink.to_i < 0
+        begin
+        puts "How many?".colorize(:green)
+        @no_drink = gets.chomp
+        raise if @no_drink.to_i.to_s != @no_drink || @no_drink.to_i < 0
+        rescue
+            error_message
+        end
+    end
 end
 
 def drinks_by_category
-    @drinks_cat = (@standard_drinks * @no_drink).round(1)
+    @drinks_cat = (@standard_drinks * @no_drink.to_i).round(1)
     @drinks += @drinks_cat
     clear
-    puts "Number of standard drinks: #{@drinks_cat}".colorize(:red)
+    puts "Number of standard drinks: #{@drinks_cat}"
     back_to_menu
 end
 
