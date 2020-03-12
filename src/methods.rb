@@ -64,44 +64,44 @@ end
 
 def bac_calc_input
     if @user_name == ""
-        puts "What is your name?"
+        puts "What is your name?".colorize(:green)
         @user_name = gets.chomp
-        puts "What is your weight in kgs?"
+        puts "What is your weight in kgs?".colorize(:green)
         @weight = gets.chomp.to_f
-        puts "Is your sex male or female? (m/f)"
+        puts "Is your sex male or female? (m/f)".colorize(:green)
         sex = gets.chomp
         sex_constants(sex)
         CSV.open("users.csv", "a") { |csv|
             csv << [@user_name, @weight, @metabolic, @body_water]
         }
     end
-    puts "What hour did you start drinking (in 24hr time)?"
+    puts "What hour did you start drinking (in 24hr time)?".colorize(:green)
     time_hour = gets.chomp.to_i
-    puts "What minute did you start drinking?"
+    puts "What minute did you start drinking?".colorize(:green)
     time_minute = gets.chomp.to_i
     if @drinks == 0
-        puts "How many standard drinks have you consumed?"
+        puts "How many standard drinks have you consumed?".colorize(:green)
         @drinks = gets.chomp.to_f
     end
     @drinker = Drinker.new(@user_name, @weight, @metabolic, @body_water, time_hour, time_minute, @drinks)
 end
 
 def drinks_calc_percentage
-    puts "What is the volume of the drink in mls?"
+    puts "What is the volume of the drink in mls?".colorize(:green)
     volume = gets.chomp.to_i
-    puts "What is the percentage of alcohol?"
+    puts "What is the percentage of alcohol?".colorize(:green)
     alcohol = gets.chomp.to_f
-    puts "How many drinks comsumed?"
+    puts "How many drinks comsumed?".colorize(:green)
     quantity = gets.chomp.to_i
     standard_drinks = (quantity * volume * alcohol/100 / 12.674).round(1)
     @drinks += standard_drinks
     clear
-    puts "Standard Drinks: #{standard_drinks}"
+    puts "Standard Drinks: #{standard_drinks}".colorize(:red)
 end
 
 def no_of_drinks
     clear
-    puts "How many?"
+    puts "How many?".colorize(:green)
     @no_drink = gets.chomp.to_i
 end
 
@@ -109,7 +109,7 @@ def drinks_by_category
     @drinks_cat = (@standard_drinks * @no_drink).round(1)
     @drinks += @drinks_cat
     clear
-    puts "Number of standard drinks: #{@drinks_cat}"
+    puts "Number of standard drinks: #{@drinks_cat}".colorize(:red)
     back_to_menu
 end
 
@@ -119,7 +119,7 @@ def user_selection
         @array_of_users << user.name
     }
     (0..@array_of_users.length-1).each { |i|
-        puts "#{i+1}. #{@array_of_users[i]}"
+        puts "#{i+1}. #{@array_of_users[i]}".colorize(:green)
     }
 end
 
@@ -142,4 +142,19 @@ def count_down
     puts @a.asciify("1")
     sleep(1)
     clear
+end
+
+def welcome
+    can_i_drive
+    welcome_box = TTY::Box.frame(width: 27, height: 11) {
+        "WELCOME\nTo use Can I Drive simply follow the on screen instructions. You will navigate through the menu's by typing the corresponding number then prssing enter."
+    }
+    print welcome_box
+    continue
+    can_i_drive
+    warning_box = TTY::Box.frame(width: 27, height: 11) {
+        "WARNING!\nThe Blood Alcohol Consentration calculated is only an estimation and may differ from a blood test or breathalyser."
+    }
+    print warning_box
+    continue
 end
