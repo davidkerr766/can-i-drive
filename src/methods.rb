@@ -85,7 +85,7 @@ def bac_calc_input
                 @weight = gets.chomp.to_i
                 #Checks the value is not negative. A string of letters will be cast to 0 and raise an exception
                 raise if @weight <= 0
-            rescue
+            rescue Exception
                 error_message
             end  
         end
@@ -94,7 +94,7 @@ def bac_calc_input
                 puts "Is your sex male or female? (m/f)".colorize(:green)
                 @sex = gets.chomp
                 raise if @sex != "m" && @sex != "f"
-            rescue
+            rescue Exception
                 error_message
             end
         end
@@ -110,7 +110,7 @@ def bac_calc_input
             @time_hour = gets.chomp
             #Checks if letters have been entered or numbers outside of 0-24
             raise if @time_hour.to_i.to_s != @time_hour || @time_hour.to_i < 0 || @time_hour.to_i > 24
-        rescue
+        rescue Exception
             error_message
         end
     end
@@ -119,7 +119,7 @@ def bac_calc_input
             puts "What minute did you start drinking?".colorize(:green)
             @time_minute = gets.chomp
             raise if @time_minute.to_i.to_s != @time_minute || @time_minute.to_i < 0 || @time_minute.to_i > 60
-        rescue
+        rescue Exception
             error_message
         end
     end
@@ -129,7 +129,7 @@ def bac_calc_input
                 puts "How many standard drinks have you consumed?".colorize(:green)
                 @drinks = gets.chomp
                 raise if @drinks.to_i.to_s != @drinks || @drinks.to_i < 0
-            rescue
+            rescue Exception
                 error_message
             end
         end
@@ -148,7 +148,7 @@ def drinks_calc_percentage
             volume = gets.chomp
             #Checks if letters or a negative number is used as input
             raise if volume.to_i.to_s != volume || volume.to_i < 0
-        rescue
+        rescue Exception
             error_message
         end
     end
@@ -157,7 +157,7 @@ def drinks_calc_percentage
             puts "What is the percentage of alcohol?".colorize(:green)
             alcohol = gets.chomp
             raise if alcohol.to_i.to_s != alcohol || alcohol.to_i < 0
-        rescue
+        rescue Exception
             error_message
         end
     end
@@ -166,7 +166,7 @@ def drinks_calc_percentage
             puts "How many drinks comsumed?".colorize(:green)
             quantity = gets.chomp
             raise if quantity.to_i.to_s != quantity || quantity.to_i < 0
-        rescue
+        rescue Exception
             error_message
         end
     end
@@ -186,7 +186,7 @@ def no_of_drinks
         @no_drink = gets.chomp
         #Checks if the input is letters or negative
         raise if @no_drink.to_i.to_s != @no_drink || @no_drink.to_i < 0
-        rescue
+        rescue Exception
             error_message
         end
     end
