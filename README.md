@@ -25,7 +25,7 @@ When the application asks for specific inputs the input will be clearly describe
 
 ### Implementation Plan
 [Trello](https://trello.com/b/oPIScicA/can-i-drive)
-### How to Use
+### How to Install and Use
 
 #### Links
 [GitHub](https://github.com/davidkerr766/can-i-drive)
