@@ -26,8 +26,8 @@ welcome
 
 loop do
     can_i_drive
-    puts "1. New User".colorize(:green)
-    puts "2. Returning".colorize(:green)
+    puts "1. New User".colorize(:cyan)
+    puts "2. Returning".colorize(:cyan)
     make_a_selection
     user_choice =gets.chomp
     case user_choice
@@ -65,10 +65,10 @@ end
 
 loop do
     can_i_drive
-    puts "1. Information about blood alcohol concentration(BAC)".colorize(:green)
-    puts "2. Can I drive?".colorize(:green)
-    puts "3. Party mode(WARNING: Once you start partying there's no stopping)".colorize(:green)
-    puts "4. Quit".colorize(:green)
+    puts "1. Information about blood alcohol concentration(BAC)".colorize(:cyan)
+    puts "2. Can I drive?".colorize(:cyan)
+    puts "3. Party mode(WARNING: Once you start partying there's no stopping)".colorize(:cyan)
+    puts "4. Quit".colorize(:cyan)
     make_a_selection
     choice = gets.chomp
 
@@ -80,11 +80,11 @@ loop do
         loop do
             clear
             can_i_drive
-            puts "Standard drinks tally: #{@drinks}".colorize(:green)
-            puts "\n1. Can I Drive?".colorize(:green)
-            puts "2. Calculate number of drinks".colorize(:green)
-            puts "3. Reset drinks tally".colorize(:green)
-            puts "4. Back".colorize(:green)
+            puts "Standard drinks tally: #{@drinks}"
+            puts "\n1. Can I Drive?".colorize(:cyan)
+            puts "2. Calculate number of drinks".colorize(:cyan)
+            puts "3. Reset drinks tally".colorize(:cyan)
+            puts "4. Back".colorize(:cyan)
             make_a_selection
             drink_choice = gets.chomp
             case drink_choice
@@ -104,9 +104,9 @@ loop do
                     clear
                     can_i_drive
                     puts "Standard drinks tally: #{@drinks}"
-                    puts "\n1. Add drink by alcohol percentage and volume".colorize(:green)
-                    puts "2. Add drink by category".colorize(:green)
-                    puts "3. Finished adding drinks".colorize(:green)
+                    puts "\n1. Add drink by alcohol percentage and volume".colorize(:cyan)
+                    puts "2. Add drink by category".colorize(:cyan)
+                    puts "3. Finished adding drinks".colorize(:cyan)
                     make_a_selection
                     calc_choice = gets.chomp
                     case calc_choice
@@ -119,14 +119,14 @@ loop do
                         loop do
                             clear
                             can_i_drive
-                            puts "Standard drinks tally: #{@drinks}".colorize(:red)
-                            puts "\n1. Schooner of mid strength beer (425ml, 3.5%)".colorize(:green)
-                            puts "2. Schooner of full strength beer (425ml, 4.8%)".colorize(:green)
-                            puts "3. Pint of mid strength beer (570ml, 3.5%)".colorize(:green)
-                            puts "4. Pint of full strength beer (570ml, 4.8%)".colorize(:green)
-                            puts "5. Standard glass of wine (150ml, 13%)".colorize(:green)
-                            puts "6. One shot of spirits (30ml, 40%)".colorize(:green)
-                            puts "7. Finished".colorize(:green)
+                            puts "Standard drinks tally: #{@drinks}"
+                            puts "\n1. Schooner of mid strength beer (425ml, 3.5%)".colorize(:cyan)
+                            puts "2. Schooner of full strength beer (425ml, 4.8%)".colorize(:cyan)
+                            puts "3. Pint of mid strength beer (570ml, 3.5%)".colorize(:cyan)
+                            puts "4. Pint of full strength beer (570ml, 4.8%)".colorize(:cyan)
+                            puts "5. Standard glass of wine (150ml, 13%)".colorize(:cyan)
+                            puts "6. One shot of spirits (30ml, 40%)".colorize(:cyan)
+                            puts "7. Finished".colorize(:cyan)
                             make_a_selection
                             category_choice = gets.chomp
                             case category_choice
