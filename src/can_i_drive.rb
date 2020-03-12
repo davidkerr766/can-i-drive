@@ -84,7 +84,7 @@ loop do
             clear
             can_i_drive
             puts "Standard drinks tally: #{@drinks}"
-            puts "\n1. Can I Drive? (If you know how many drinks you've had start here)".colorize(:cyan)
+            puts "\n1. Can I Drive? (Start here if you know how many drinks you've had)".colorize(:cyan)
             puts "2. Calculate number of drinks".colorize(:cyan)
             puts "3. Reset drinks tally".colorize(:cyan)
             puts "4. Back".colorize(:cyan)
@@ -101,6 +101,7 @@ loop do
                 puts @drinker.bac_calc <= 0.05 ? @a.asciify("YES!") : @a.asciify("NOT YET")
                 puts "\nBlood alcohol is: #{@drinker.bac_calc}"
                 puts "You can drive at: #{@drinker.time_to_drive}"
+                puts "(Estimated BAC of 0.05 at above time)"
                 back_to_menu
             when "2"
                 loop do

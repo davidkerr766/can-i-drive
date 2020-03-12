@@ -5,7 +5,7 @@ class Drinker < User
         super(name, weight, metabolic_constant, body_water_constant)
         @start_hour = start_hour.to_i
         @start_min = start_min.to_i
-        @drinks = drinks
+        @drinks = drinks.to_f
     end
 
     def drinking_session

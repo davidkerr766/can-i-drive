@@ -110,20 +110,37 @@ def bac_calc_input
         end
     end
     if @drinks == 0
-        puts "How many standard drinks have you consumed?".colorize(:green)
-        @drinks = gets.chomp.to_f
+        while @drinks.to_i.to_s != @drinks || @drinks.to_i < 0
+            begin
+                puts "How many standard drinks have you consumed?".colorize(:green)
+                @drinks = gets.chomp
+                raise if @drinks.to_i.to_s != @drinks || @drinks.to_i < 0
+            rescue
+                error_message
+            end
+        end
     end
     @drinker = Drinker.new(@user_name, @weight, @metabolic, @body_water, @time_hour, @time_minute, @drinks)
 end
 
 def drinks_calc_percentage
-    puts "What is the volume of the drink in mls?".colorize(:green)
-    volume = gets.chomp.to_i
+    volume = "abc"
+    alcohol = "abc"
+    quantity = "abc"
+    while volume.to_i.to_s != volume || volume.to_i < 0
+        begin
+            puts "What is the volume of the drink in mls?".colorize(:green)
+            volume = gets.chomp
+            raise if volume.to_i.to_s != volume || volume.to_i < 0
+        rescue
+            error_message
+        end
+    end
     puts "What is the percentage of alcohol?".colorize(:green)
-    alcohol = gets.chomp.to_f
+    alcohol = gets.chomp
     puts "How many drinks comsumed?".colorize(:green)
-    quantity = gets.chomp.to_i
-    standard_drinks = (quantity * volume * alcohol/100 / 12.674).round(1)
+    quantity = gets.chomp
+    standard_drinks = (quantity.to_i * volume.to_i * alcohol.to_f/100 / 12.674).round(1)
     @drinks += standard_drinks
     clear
     puts "Standard Drinks: #{standard_drinks}".colorize(:red)
