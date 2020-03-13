@@ -22,10 +22,12 @@ The user will navigate through the application with menus.  Each item on the men
 When the application asks for specific inputs the input will be clearly described in the application.  If the input is weight, a positive number is required.  The application will not allow any other kind of input in the field.  Error handling will be set up such that an exception will be raised if an invalid entry is entered.  The user will be notified of the error with a message “Error! Read the question carefully”. The user will then be given another chance to enter the input until they provide a valid entry.  This will be achieved by looping around the error handling.
 
 ### Control Flow Diagram
-
+![ControlFlow](./docs/control_flow.jpg)
 ### Implementation Plan
+![Trello](./docs/Trello.jpg)
 [Trello](https://trello.com/b/oPIScicA/can-i-drive)
 ### How to Install and Use
 
 #### Links
 [GitHub](https://github.com/davidkerr766/can-i-drive)
+![Github](./docs/Github.jpg)
