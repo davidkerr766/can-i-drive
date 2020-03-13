@@ -27,6 +27,22 @@ When the application asks for specific inputs the input will be clearly describe
 ![Trello](./docs/Trello.jpg)
 [Trello](https://trello.com/b/oPIScicA/can-i-drive)
 ### How to Install and Use
+The application requires a computer with access to command line interface.  Ruby version of at least 2.5.1 is also a requirement with the Ruby gem Bundler installed. In the terminal the following commands can be used to install Ruby and Bundler.
+
+Install Ruby (On Linux):
+```
+sudo apt-get install ruby
+```
+Install Bundler Gem:
+```
+gem install bundler
+```
+With these installed all that’s left to do is either clone or download the repository from Github and run the following commands in the terminal from the root folder.
+
+```
+cd src
+ruby can_i_drive.rb
+```
 
 #### Links
 [GitHub](https://github.com/davidkerr766/can-i-drive)
