@@ -1,8 +1,8 @@
 echo “Welcome to Can I Drive?”
-echo “Lets begin the install now”
+echo “Required files will be downloaded from Github”
 git clone “https://github.com/davidkerr766/can-i-drive.git”
 cd can-i-drive/src
-echo “Time to ensure all required gems are installed”
+echo “Required gems will now be installed”
 bundle install
-echo “All gems have been installed, running application for the first time now”
+echo “Launching the application...”
 ruby can_i_drive.rb

@@ -37,11 +37,13 @@ Install Bundler Gem:
 ```
 gem install bundler
 ```
-With these installed all that’s left to do is either clone or download the repository from Github and run the following commands in the terminal from the root folder.
+With these installed all that’s left to do is clone the repository from Github and run the following command in the terminal from the root folder.
+
+
 
 ```
-cd src
-ruby can_i_drive.rb
+sh -c "\$(curl -fsSL https://raw.githubusercontent.com/davidkerr766/can-i-drive/master/src/run.sh)
+
 ```
 
 #### Links
